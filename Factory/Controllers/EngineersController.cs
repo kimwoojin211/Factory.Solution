@@ -73,5 +73,20 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Details",new { engineerId = engineer.EngineerId });
     }
+
+    public ActionResult Delete(int engineerId)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == engineerId);
+      return View(thisEngineer);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int engineerId)
+    {
+      var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == engineerId);
+      _db.Engineers.Remove(thisEngineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
