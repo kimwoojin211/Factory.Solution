@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Machine
+
+<h4>Add a new Machine</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(machine => machine.Name)
+  @Html.TextBoxFor(machine => machine.Name)
+
+  @Html.LabelFor(machine => machine.Manufacturer)
+  @Html.TextBoxFor(machine => machine.Manufacturer)
+
+  @Html.Label("Model Number")
+  @Html.TextBoxFor(machine => machine.ModelNumber)
+
+  @Html.LabelFor(machine => machine.Condition)
+  @Html.TextBoxFor(machine => machine.Condition)
+
+  @Html.Label("Date of Last Service")
+  @Html.TextBoxFor(machine => machine.LastServiced, new { type="date" })
+
+  @Html.Label("Select Engineer")
+  @Html.DropDownList("EngineerId", null, string.Empty)
+
+  <input type="submit" value="Add new machine" />
+}
+<p>@Html.ActionLink("Show all Machines", "Index")</p>

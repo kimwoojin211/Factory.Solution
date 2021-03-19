@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    [Migration("20210319154602_Initial")]
+    [Migration("20210319165526_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,8 +27,8 @@ namespace Factory.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("YearsExperience")
-                        .HasColumnType("int");
+                    b.Property<string>("YearsExperience")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("EngineerId");
 
@@ -65,10 +65,13 @@ namespace Factory.Migrations
                     b.Property<string>("Condition")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("LastServiced")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Manufacturer")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Model")
+                    b.Property<string>("ModelNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")

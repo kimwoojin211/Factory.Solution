@@ -12,8 +12,9 @@ namespace Factory.Models
     public int MachineId { get;set; } 
     public string Name { get; set; }
     public string Manufacturer { get; set; }
-    public string Model { get; set; }
+    public string ModelNumber { get; set; }
     public string Condition { get; set; }
+    public string LastServiced { get; set; }
     public virtual ICollection<EngineerMachine> JoinEntities { get; }
     
   }

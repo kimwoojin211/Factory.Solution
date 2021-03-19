@@ -1,0 +1,22 @@
+@{
+  Layout= "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Fill out the information of your new engineer:</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.Label("Years of Experience")
+  @Html.TextBoxFor(model => model.YearsExperience, new {type = "number"})
+
+  @Html.Label("Licensed for:")
+  @Html.DropDownList("MachineId", null, string.Empty)
+  
+  <input type="submit" value="Add new engineer">
+}
+
+<p>@Html.ActionLink("Back to categories", "Index")</p>

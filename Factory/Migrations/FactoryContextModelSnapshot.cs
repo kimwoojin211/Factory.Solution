@@ -25,8 +25,8 @@ namespace Factory.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("YearsExperience")
-                        .HasColumnType("int");
+                    b.Property<string>("YearsExperience")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("EngineerId");
 
@@ -63,10 +63,13 @@ namespace Factory.Migrations
                     b.Property<string>("Condition")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("LastServiced")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Manufacturer")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Model")
+                    b.Property<string>("ModelNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")

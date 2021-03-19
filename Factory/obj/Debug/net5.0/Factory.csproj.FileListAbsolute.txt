@@ -43,3 +43,5 @@ W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Fa
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\ref\Factory.dll
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Factory.pdb
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Factory.genruntimeconfig.cache
+W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Engineers\Create.cshtml.g.cs
+W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Machines\Create.cshtml.g.cs

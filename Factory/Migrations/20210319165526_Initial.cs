@@ -14,7 +14,7 @@ namespace Factory.Migrations
                     EngineerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    YearsExperience = table.Column<int>(type: "int", nullable: false)
+                    YearsExperience = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,8 +29,9 @@ namespace Factory.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     Manufacturer = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Model = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Condition = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    ModelNumber = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Condition = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    LastServiced = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
                 },
                 constraints: table =>
                 {
