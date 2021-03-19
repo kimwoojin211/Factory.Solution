@@ -4,6 +4,11 @@
 
 @model Factory.Models.Engineer
 
+@if(ViewBag.ErrorMessage != null)
+{
+  <h1 style="color:red">@ViewBag.ErrorMessage</h1>
+}
+
 <h4>Fill out the information of your new engineer:</h4>
 @using (Html.BeginForm())
 {
@@ -13,7 +18,7 @@
   @Html.Label("Years of Experience")
   @Html.TextBoxFor(model => model.YearsExperience, new {type = "number"})
 
-  @Html.Label("Licensed for: (Leave blank for no valid licenses)")
+  @Html.Label("Licensed for: (Leave blank for no relevant licenses)")
   @Html.DropDownList("MachineId", null, string.Empty)
   
   <input type="submit" value="Add new engineer">

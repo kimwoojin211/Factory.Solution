@@ -29,19 +29,29 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Engineer engineer, int machineId)
     {
-
-      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == engineer.EngineerId && EngMach.MachineId == machineId);
-      if(!match) {
-        _db.Engineers.Add(engineer);
-        _db.SaveChanges();
-        if(machineId != 0)
-        {
-          _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = machineId });
-        }
-        _db.SaveChanges();
+      System.Console.WriteLine(engineer.Name);
+      if(engineer.Name is null)
+      {
+        ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+        ViewBag.ErrorMessage = "Please enter a name";
+        return View();
       }
-
+      else
+      {
+        bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == engineer.EngineerId && EngMach.MachineId == machineId);
+        if(!match) 
+        {
+          _db.Engineers.Add(engineer);
+          _db.SaveChanges();
+          if(machineId != 0)
+          {
+            _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = machineId });
+          }
+          _db.SaveChanges();
+          
+        }
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int engineerId)
@@ -63,10 +73,19 @@ namespace Factory.Controllers
 
     [HttpPost]
     public ActionResult Edit(Engineer engineer)
-    {
-      _db.Entry(engineer).State = EntityState.Modified;
-      _db.SaveChanges();
-      return RedirectToAction("Details",new { engineerId = engineer.EngineerId });
+    {      
+      if(engineer.Name is null)
+      {
+        ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+        ViewBag.ErrorMessage = "Please enter a name";
+        return View(engineer);
+      }
+      else
+      {
+        _db.Entry(engineer).State = EntityState.Modified;
+        _db.SaveChanges();
+        return RedirectToAction("Details",new { engineerId = engineer.EngineerId });
+      }
     }
 
     public ActionResult Delete(int engineerId)

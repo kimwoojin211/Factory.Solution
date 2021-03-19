@@ -29,19 +29,28 @@ namespace Factory.Controllers
 
     [HttpPost]
     public ActionResult Create(Machine machine, int EngineerId)
-    {
-      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == EngineerId && EngMach.MachineId == machine.MachineId);
-      if(!match)
+    {      
+      if(machine.Name is null)
       {
-        _db.Machines.Add(machine);
-        _db.SaveChanges();
-        if (EngineerId != 0)
-        {
-          _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
-        }
-        _db.SaveChanges();
+        ViewBag.MachineId = new SelectList(_db.Engineers, "EngineerId", "Name");
+        ViewBag.ErrorMessage = "Please enter a name.";
+        return View();
       }
-      return RedirectToAction("Index");
+      else
+      {
+        bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == EngineerId && EngMach.MachineId == machine.MachineId);
+        if(!match)
+        {
+          _db.Machines.Add(machine);
+          _db.SaveChanges();
+          if (EngineerId != 0)
+          {
+            _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
+          }
+          _db.SaveChanges();
+        }
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int machineId)
@@ -64,10 +73,19 @@ namespace Factory.Controllers
 
     [HttpPost]
     public ActionResult Edit(Machine machine)
-    {
+    {      
+      if(machine.Name is null)
+      {
+        ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+        ViewBag.ErrorMessage = "Please enter a name";
+        return View(machine);
+      }
+      else
+      {
       _db.Entry(machine).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Details",new { machineId = machine.MachineId });
+      }
     }
 
     public ActionResult Delete(int MachineId)

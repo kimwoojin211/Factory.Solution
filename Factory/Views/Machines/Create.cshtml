@@ -3,6 +3,12 @@
 }
 @model Factory.Models.Machine
 
+@if (ViewBag.ErrorMessage != null)
+{
+  <h1 style="color:red">@ViewBag.ErrorMessage</h1>
+}
+
+
 <h4>Add a new Machine</h4>
 
 @using (Html.BeginForm())
@@ -17,7 +23,12 @@
   @Html.TextBoxFor(machine => machine.ModelNumber)
 
   @Html.LabelFor(machine => machine.Condition)
-  @Html.TextBoxFor(machine => machine.Condition)
+  @Html.RadioButtonFor(machine => machine.Condition,"Operational")
+  @Html.Label("Operational")
+  @Html.RadioButtonFor(machine => machine.Condition,"Malfunctioning")
+  @Html.Label("Malfunctioning")
+  @Html.RadioButtonFor(machine => machine.Condition,"Under Repair")
+  @Html.Label("Under Repair")
 
   @Html.Label("Date of Last Service")
   @Html.TextBoxFor(machine => machine.LastServiced, new { type="date" })

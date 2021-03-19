@@ -4,6 +4,11 @@
 @model Factory.Models.Engineer
 @using Factory.Models
 
+@if(ViewBag.ErrorMessage != null)
+{
+  <h1 style="color:red">@ViewBag.ErrorMessage</h1>
+}
+
 <h1> Edit Engineer: @Model.Name </h1>
 
 @using (Html.BeginForm())
@@ -12,6 +17,9 @@
 
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Busy)
+  @Html.EditorFor(model => model.Busy)
 
   @Html.Label("Years of Experience")
   @Html.EditorFor(model => model.YearsExperience, new {type = "number"})

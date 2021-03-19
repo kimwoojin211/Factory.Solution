@@ -4,9 +4,10 @@
 @model Factory.Models.Engineer
 @using Factory.Models
 
-<h1> Details</h1>
+<h1>Engineer Details</h1>
 <hr />
 <p> Engineer: @Model.Name</p>
+<p> Status: @(Model.Busy ? "Busy" : "Available")</p>
 <p> Years of Experience: @Model.YearsExperience </p>
 
 @if(@Model.JoinEntities.Count == 0)
