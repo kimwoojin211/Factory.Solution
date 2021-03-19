@@ -47,3 +47,5 @@ W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Ra
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Machines\Create.cshtml.g.cs
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Engineers\Details.cshtml.g.cs
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Machines\Details.cshtml.g.cs
+W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Engineers\Edit.cshtml.g.cs
+W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Machines\Edit.cshtml.g.cs

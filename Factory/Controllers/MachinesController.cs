@@ -30,7 +30,7 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine machine, int EngineerId)
     {
-      bool match = _db.EngineerMachine.Any(x => x.EngineerId == EngineerId && x.MachineId == machine.MachineId);
+      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == EngineerId && EngMach.MachineId == machine.MachineId);
       if(!match)
       {
         _db.Machines.Add(machine);
@@ -52,6 +52,27 @@ namespace Factory.Controllers
         .FirstOrDefault(machine => machine.MachineId == machineId);
 
       return View(thisMachine);
+    }
+    
+    public ActionResult Edit(int machineId)
+    {
+      Machine thisMachine = _db.Machines
+        .FirstOrDefault(machine => machine.MachineId == machineId);
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+      return View(thisMachine);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Machine machine, int EngineerId)
+    {
+      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == EngineerId && EngMach.MachineId == machine.MachineId);
+      if(!match && EngineerId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
+      }
+      _db.Entry(machine).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details",new { machineId = machine.MachineId });
     }
   }
 }

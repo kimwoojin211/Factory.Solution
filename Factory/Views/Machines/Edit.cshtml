@@ -1,0 +1,34 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Machine
+
+<h4>Add a new Machine</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(machine => machine.Name)
+  @Html.EditorFor(machine => machine.Name)
+
+  @Html.LabelFor(machine => machine.Manufacturer)
+  @Html.EditorFor(machine => machine.Manufacturer)
+
+  @Html.Label("Model Number")
+  @Html.EditorFor(machine => machine.ModelNumber)
+
+  @Html.LabelFor(machine => machine.Condition)
+  @Html.EditorFor(machine => machine.Condition)
+
+  @Html.Label("Date of Last Service")
+  @Html.EditorFor(machine => machine.LastServiced, new { type="date" })
+
+  @Html.Label("Add another licensed Engineer (or leave blank)")
+  @Html.DropDownList("EngineerId", null, string.Empty)
+
+  <input type="submit" value="Add new machine" />
+}
+
+
+<p>@Html.ActionLink($"Back to {Model.Name} Details (Changes not saved)", "Details", new { machineId = Model.MachineId})</p>
+<p>@Html.ActionLink("Show all Machines", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

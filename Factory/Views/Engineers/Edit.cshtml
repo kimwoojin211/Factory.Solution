@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Engineer
+@using Factory.Models
+
+<h1> Edit Engineer: @Model.Name </h1>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.Label("Years of Experience")
+  @Html.EditorFor(model => model.YearsExperience, new {type = "number"})
+
+  @Html.Label("Add another machine license (or leave blank)")
+  @Html.DropDownList("MachineId", null, string.Empty)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Show all Engineers", "Index")</p>
