@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Factory.Controllers
 {
@@ -10,5 +12,11 @@ namespace Factory.Controllers
     {
       _db = db;
     }
+    
+    public ActionResult Index()
+    {
+      return View(_db.Machines.ToList());
+    }
+
   }
 }
