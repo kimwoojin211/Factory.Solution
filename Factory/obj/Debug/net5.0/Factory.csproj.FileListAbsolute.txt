@@ -53,3 +53,4 @@ W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Ra
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Machines\Delete.cshtml.g.cs
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Engineers\AddMachine.cshtml.g.cs
 W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Machines\AddEngineer.cshtml.g.cs
+W:\Dropbox\Documents\Epicodus\indiv\Factory.Solution\factory\obj\Debug\net5.0\Razor\Views\Home\Splash.cshtml.g.cs
