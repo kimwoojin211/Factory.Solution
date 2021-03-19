@@ -22,7 +22,7 @@ else
   <ul>
     @foreach(var join in Model.JoinEntities)
     {
-      <li>@join.Engineer.Name</li>
+      <li>@Html.ActionLink($"{join.Engineer.Name}", "Details", "Engineers", new { engineerId = join.Engineer.EngineerId})</li>
     }
   </ul>
 }
