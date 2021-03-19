@@ -27,16 +27,16 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Engineer engineer, int MachineId)
+    public ActionResult Create(Engineer engineer, int machineId)
     {
 
-      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == engineer.EngineerId && EngMach.MachineId == MachineId);
+      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == engineer.EngineerId && EngMach.MachineId == machineId);
       if(!match) {
         _db.Engineers.Add(engineer);
         _db.SaveChanges();
-        if(MachineId != 0)
+        if(machineId != 0)
         {
-          _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = MachineId });
+          _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = machineId });
         }
         _db.SaveChanges();
       }
@@ -62,12 +62,12 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Engineer engineer, int MachineId)
+    public ActionResult Edit(Engineer engineer, int machineId)
     {
-      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == engineer.EngineerId && EngMach.MachineId == MachineId);
-      if(!match && MachineId != 0)
+      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == engineer.EngineerId && EngMach.MachineId == machineId);
+      if(!match && machineId != 0)
       {
-        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = MachineId });
+        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = machineId });
       }
       _db.Entry(engineer).State = EntityState.Modified;
       _db.SaveChanges();
@@ -97,6 +97,25 @@ namespace Factory.Controllers
       _db.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Details", new { engineerId = engineerId});
+    }
+
+    public ActionResult AddMachine(int engineerId)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == engineerId);
+      ViewBag.MachineId = new SelectList(_db.Machines,"MachineId","Name");
+      return View(thisEngineer);
+    }
+
+    [HttpPost]
+    public ActionResult AddMachine(Engineer engineer, int machineId)
+    {
+      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == engineer.EngineerId && EngMach.MachineId == machineId);
+      if(!match && machineId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = machineId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { engineerId = engineer.EngineerId});
     }
   }
 }

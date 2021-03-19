@@ -99,5 +99,25 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Details", new { machineId = machineId});
     }
+
+    public ActionResult AddEngineer(int machineId)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == machineId);
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+      return View(thisMachine);
+    }
+
+    [HttpPost]
+    public ActionResult AddEngineer(Machine machine, int EngineerId)
+    {
+      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == EngineerId && EngMach.MachineId == machine.MachineId);
+      if(!match && EngineerId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { machineId = machine.MachineId});
+    }
+
   }
 }
