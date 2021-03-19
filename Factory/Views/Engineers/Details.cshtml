@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Engineer
+@using Factory.Models
+
+<h1> Details</h1>
+<hr />
+<p> Engineer: @Model.Name</p>
+<p> Years of Experience: @Model.YearsExperience </p>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>Not licensed for any machines in the database.</p>
+}
+else
+{
+  <p>Licensed for:</p>
+  <ul>
+    @foreach(var join in Model.JoinEntities)
+    {
+      <li>@join.Machine.Name</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("View all Engineers", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
