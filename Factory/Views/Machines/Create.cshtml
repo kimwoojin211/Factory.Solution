@@ -22,7 +22,7 @@
   @Html.Label("Date of Last Service")
   @Html.TextBoxFor(machine => machine.LastServiced, new { type="date" })
 
-  @Html.Label("Select Engineer")
+  @Html.Label("Select Engineer (Leave blank for no licensed Engineers)")
   @Html.DropDownList("EngineerId", null, string.Empty)
 
   <input type="submit" value="Add new machine" />

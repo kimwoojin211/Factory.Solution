@@ -13,7 +13,7 @@
   @Html.Label("Years of Experience")
   @Html.TextBoxFor(model => model.YearsExperience, new {type = "number"})
 
-  @Html.Label("Licensed for:")
+  @Html.Label("Licensed for: (Leave blank for no valid licenses)")
   @Html.DropDownList("MachineId", null, string.Empty)
   
   <input type="submit" value="Add new engineer">

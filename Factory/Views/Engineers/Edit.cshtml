@@ -16,9 +16,6 @@
   @Html.Label("Years of Experience")
   @Html.EditorFor(model => model.YearsExperience, new {type = "number"})
 
-  @Html.Label("Add another machine license (or leave blank)")
-  @Html.DropDownList("MachineId", null, string.Empty)
-
   <input type="submit" value="Save" />
 }
 

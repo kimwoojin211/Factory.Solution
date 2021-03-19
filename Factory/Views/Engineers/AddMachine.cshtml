@@ -15,6 +15,7 @@
 
   <input type="submit" value="Add" />
 }
+<p> @Html.ActionLink("Machine not found? Click here to add it to the database.", "Create", "Machines")</p>
 
 <hr />
 <p> @Html.ActionLink($"Back to Engineer: {@Model.Name}", "Details", new { engineerId = Model.EngineerId })</p>

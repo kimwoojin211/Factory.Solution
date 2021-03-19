@@ -63,13 +63,8 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Machine machine, int EngineerId)
+    public ActionResult Edit(Machine machine)
     {
-      bool match = _db.EngineerMachine.Any(EngMach => EngMach.EngineerId == EngineerId && EngMach.MachineId == machine.MachineId);
-      if(!match && EngineerId != 0)
-      {
-        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
-      }
       _db.Entry(machine).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Details",new { machineId = machine.MachineId });

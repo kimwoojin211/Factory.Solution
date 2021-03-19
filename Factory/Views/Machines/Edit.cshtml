@@ -22,9 +22,6 @@
   @Html.Label("Date of Last Service")
   @Html.EditorFor(machine => machine.LastServiced, new { type="date" })
 
-  @Html.Label("Add another licensed Engineer (or leave blank)")
-  @Html.DropDownList("EngineerId", null, string.Empty)
-
   <input type="submit" value="Add new machine" />
 }
 
