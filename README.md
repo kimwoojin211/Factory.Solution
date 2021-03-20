@@ -2,7 +2,7 @@
 
 #### _Program to help a factory manager manage engineers and machines_
 
-#### By _**Woo Jin Kim**_
+#### By **Woo Jin Kim**
 
 ## Technologies Used
 
@@ -29,7 +29,7 @@ _An MVC web application that utilizes a database with many-to-many relationships
 
 _Note: Make sure you have **.NET 5.0** installed. If not, please visit [this link](https://dotnet.microsoft.com/download/dotnet/5.0)_
 
-* _Clone this repository to your computer from [this repository](https://github.com/kimwoojin211/Factory.git)
+* _Clone this repository to your computer from [this repository](https://github.com/kimwoojin211/Factory.git)_
 * _In your terminal of choice, navigate to the Factory directory_
 * _Create a file named "appsettings.json" in this directory_
 * _Add the following lines of code to your newly created "appsettings.json" file and save._
@@ -40,7 +40,7 @@ _Note: Make sure you have **.NET 5.0** installed. If not, please visit [this lin
   }
 }
 ```
-**NOTE:**  _[YOUR PASSWORD]_ **MUST** be the same password as that on your local machine/server.<br>
+**NOTES:**  _[YOUR PASSWORD]_ **MUST** be the same password as that on your local machine/server.<br>
 _[YOUR USERNAME]_ is up to your discretion.<br>
 For help on database configuration, please see [here](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql)
 </details>
@@ -48,7 +48,7 @@ For help on database configuration, please see [here](https://www.learnhowtoprog
 
 * _Back in the terminal, enter `dotnet build` and ensure that there are no errors_
 * _Enter `dotnet ef database update` into the terminal to build the database_
-  **(Note: If a "Build failed" Error occurs, please try running `dotnet ef migrations Add Initial` in the terminal. )**
+<br> **(Note: If a "Build failed" Error occurs, please try running `dotnet ef migrations Add Initial` in the terminal. )**
 * _Enter `dotnet run` into the terminal to run the application_
 <br>
 
