@@ -3,23 +3,25 @@
 }
 @using Factory.Models;
 
-Engineers:
+<div class="SplashEngineers">
+  <h5>Engineers:</h5>
+  <ul>
+    @foreach(Engineer engineer in ViewBag.Engineers)
+    {
+      <li>@Html.ActionLink($"{engineer.Name}", "Details", "Engineers", new { engineerId = engineer.EngineerId })</li>
+    }
+  </ul>
+</div>
 
-<ul>
-  @foreach(Engineer engineer in ViewBag.Engineers)
-  {
-    <li>@Html.ActionLink($"{engineer.Name}", "Details", "Engineers", new { engineerId = engineer.EngineerId })</li>
-  }
-</ul>
-
-Machines:
-
-<ul>
-  @foreach(Machine machine in ViewBag.Machines)
-  {
-    <li>@Html.ActionLink($"{machine.Name}", "Details", "Machines", new { machineId = machine.MachineId })</li>
-  }
-</ul>
+<div class="SplashMachines">
+  <h5>Machines:</h5>
+  <ul>
+    @foreach(Machine machine in ViewBag.Machines)
+    {
+      <li>@Html.ActionLink($"{machine.Name}", "Details", "Machines", new { machineId = machine.MachineId })</li>
+    }
+  </ul>
+</div>
 
 <hr />
 <p>@Html.ActionLink("See only engineers", "Index", "Engineers")</p>
